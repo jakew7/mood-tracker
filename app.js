@@ -43,7 +43,7 @@ app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 // maps url to routes
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/moods', moods)
+app.use('/moods', moods);
 
 
 // catch 404 and forward to error handler

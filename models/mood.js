@@ -16,6 +16,11 @@ let moodSchema = new mongoose.Schema({
     notable: {
         type: String,
         trim: true
+    },
+    date: {
+        type: Date,
+        requires:'Date is required',
+        trim: true
     }
 })
 

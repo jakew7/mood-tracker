@@ -22,5 +22,14 @@ router.get('/', (req, res) => {
     })
 })
     
+// this gets create to load empty form
+router.get('/create', (req, res) => {
+    res.render('moods/create', {
+        title: 'How are you feeling?'
+    })
+
+})
+
+
 // export file
 module.exports = router
