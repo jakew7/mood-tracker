@@ -55,5 +55,15 @@ router.get('/logout', (req, res) => {
     res.redirect('/auth/login')
 })
 
+// GET github login attempt
+router.get('/github', passport.authenticate('github', { scope: ['user.email']}))
+
+// GET github strategy
+router.get('/github/callback', passport.authenticate('github', {
+    failureRedirect: '/auth/login' }), (req, res) => {
+        res.redirect('/moods')
+    }
+)
+
 // makes routes public
 module.exports = router

@@ -11,7 +11,9 @@ let userSchema = new mongoose.Schema({
     password: {
         type: String,
         trim: true
-    }
+    },
+    oauthProvider: String,
+    oauthId: String
 })
 
 // passport-local-mongoose handles auth
