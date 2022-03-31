@@ -12,11 +12,17 @@ const { connect } = require('http2');
 
 var app = express();
 
+
+//if not in production mode use env
+if (process.env.NODE_ENV !=='production') {
+  require('dotenv').config()
+}
+
 // mongoose connection
 const mongoose = require('mongoose')
 
-//connect
-mongoose.connect('mongodb+srv://comp2106:potter@comp2106.sdukz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',{
+//connect now
+mongoose.connect(process.env.DATABASE_URL,{
 }).then((res) =>{
   console.log('Connected to MongoDB')
 }).catch(() => {

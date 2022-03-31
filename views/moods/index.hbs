@@ -1,1 +1,12 @@
 <h1>{{title}}</h1>
+<section class="row">
+    {{#each moods}}
+    <div class="card col-4">
+        <div class="card-body">
+            <h3 class="card-title">{{this.name}}</h3>
+            <p class="card-text">{{this.emotion}}</p>
+            <p class="card-text">{{this.notable}}</p>
+        </div>
+    </div>
+{{/each}}
+</section>
