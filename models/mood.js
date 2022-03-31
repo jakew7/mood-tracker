@@ -18,11 +18,14 @@ let moodSchema = new mongoose.Schema({
         trim: true
     },
     date: {
-        type: Date,
+        type: String,
         requires:'Date is required',
-        trim: true
+        default: Date.now,
+        
     }
 })
+
+
 
 // make public
 module.exports = mongoose.model('Mood', moodSchema)

@@ -4,9 +4,16 @@
     {{#each moods}}
     <div class="card col-4">
         <div class="card-body">
-            <h3 class="card-title">{{this.name}}</h3>
+            <h3 
+            class="card-title">
+                <a href="/moods/edit/{{this._id}}">
+                    {{this.name}}
+                </a>
+            </h3>
             <p class="card-text">{{this.emotion}}</p>
             <p class="card-text">{{this.notable}}</p>
+            <p class="card-text">{{this.date}}</p>
+            <a class="btn btn-warning" href="/moods/delete/{{this._id}}" onclick="return confirmDelete()">Delete</a>
         </div>
     </div>
 {{/each}}

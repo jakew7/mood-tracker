@@ -2,19 +2,19 @@
 <form method="post">
     <fieldset>
         <label class="control-label col-2" for="name">Name: *</label>
-        <input name="name" id="name" required/>
+        <input name="name" id="name" required value="{{mood.name}}" />
     </fieldset>
     <fieldset>
         <label class="control-label col-2" for="emotion">Emotion: *</label>
-        <input name="emotion" id="emotion" required/>
+        <input name="emotion" id="emotion" required value="{{mood.emotion}}"/>
     </fieldset>
     <fieldset>
-        <label class="control-label col-2" for="notable">Why?  </label>
-        <textarea name="notable" id="notable"></textarea>
+        <label class="control-label col-2" for="notable">Why? </label>
+        <textarea name="notable" id="notable">{{mood.notable}}</textarea>
     </fieldset>
     <fieldset>
         <label class="control-label col-2" for="date">Date: </label>
-        <input name="date" id="date" type="date"/>
+        <input name="date" id="date" type="date" value="{{mood.date}}"/>
     </fieldset>
     <button class="btn btn-secondary offset-2">Save</button>
 </form>
