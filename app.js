@@ -8,8 +8,20 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 //link controller
 const moods = require('./routes/moods');
+const { connect } = require('http2');
 
 var app = express();
+
+// mongoose connection
+const mongoose = require('mongoose')
+
+//connect
+mongoose.connect('mongodb+srv://comp2106:potter@comp2106.sdukz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',{
+}).then((res) =>{
+  console.log('Connected to MongoDB')
+}).catch(() => {
+  console.log('MongoDB connection failed')
+})
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
