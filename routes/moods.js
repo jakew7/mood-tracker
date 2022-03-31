@@ -6,6 +6,17 @@ const router = express.Router()
 // imports Moods model for CRUD
 const Mood = require('../models/mood')
 
+//auth
+const passport = require('passport')
+function isAuthenticated(req, res, next) {
+    // authenticate with passport
+    if (req.isAuthenticated()) {
+        return next()
+    }
+    // login page
+    res.redirect('/auth/login')
+}
+
 //get root of mood
 router.get('/', (req, res) => {
 // mongoose model to query
@@ -16,22 +27,24 @@ router.get('/', (req, res) => {
         else{
             res.render('moods/index', { 
                 title: 'Moods',
-                moods: moods 
+                moods: moods,
+                user: req.user
             })
             
         }
     })
 })
     
-// this gets create to load empty form
-router.get('/create', (req, res) => {
+// this gets create to load empty form and check auth
+router.get('/create', isAuthenticated, (req, res) => {
     res.render('moods/create', {
-        title: 'How are you feeling?'
+        title: 'How are you feeling?',
+        user: req.user
     })
 })
 
 // Post moods/create
-router.post('/create', (req, res) => {
+router.post('/create',  isAuthenticated, (req, res) => {
     //  mongoose model create new mood from form
     Mood.create(req.body, (err, mood) => {
         if (err) {
@@ -44,7 +57,7 @@ router.post('/create', (req, res) => {
 })
 
 // GET delete mood  /moods/delete/randomgen
-router.get('/delete/:_id', (req, res) =>{
+router.get('/delete/:_id', isAuthenticated, (req, res) =>{
     Mood.remove({_id: req.params._id }, (err) => {
     if (err) {
         console.log(err)
@@ -56,7 +69,7 @@ router.get('/delete/:_id', (req, res) =>{
 })
 
 // GET /moods/edit/randomgen chosen edit url
-router.get('/edit/:_id', (req, res) => {
+router.get('/edit/:_id',  isAuthenticated, (req, res) => {
     Mood.findById(req.params._id, (err, mood) => {
         if(err) {
             console.log(err)
@@ -64,14 +77,15 @@ router.get('/edit/:_id', (req, res) => {
         else {
             res.render('moods/edit', {
                 title: 'How are you feeling?',
-                mood: mood
+                mood: mood,
+                user: req.user
             })
         }
     })
 })
 
 // POST /moods/edit/randomgen redirects to updated doc
-router.post('/edit/:_id', (req, res) => {
+router.post('/edit/:_id', isAuthenticated, (req, res) => {
     Mood.findByIdAndUpdate({_id: req.params._id }, req.body, null, (err, mood) => {
     if (err) {
         console.log(err)

@@ -5,6 +5,7 @@ body {
   background-color: rgba(235, 235, 235, 0.575) !important;
   background-image: url(../images/wave.png);
   background-repeat: no-repeat;
+  background-size: cover;
   
 }
 /* text */
@@ -55,4 +56,8 @@ h1 {
 
 fieldset {
   margin: 10px;
+}
+
+.btn-secondary {
+  background-color: #ff8800 !important;
 }

@@ -8,7 +8,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 //link controller
 const moods = require('./routes/moods');
-const { connect } = require('http2');
+const auth = require('./routes/auth');
 
 var app = express();
 
@@ -17,6 +17,30 @@ var app = express();
 if (process.env.NODE_ENV !=='production') {
   require('dotenv').config()
 }
+
+// passport config
+const passport = require('passport')
+const session = require('express-session')
+
+
+//  enable the session
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: true ,
+  saveUninitialized: false
+}))
+
+// initialize passport
+app.use(passport.initialize())
+app.use(passport.session())
+
+// link user model and enable local auth
+let User = require('./models/user')
+passport.use(User.createStrategy()) 
+
+// set up passport to read and write user data
+passport.serializeUser(User.serializeUser())
+passport.deserializeUser(User.deserializeUser())
 
 // mongoose connection
 const mongoose = require('mongoose')
@@ -44,6 +68,7 @@ app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/moods', moods);
+app.use('/auth', auth);
 
 
 // catch 404 and forward to error handler
