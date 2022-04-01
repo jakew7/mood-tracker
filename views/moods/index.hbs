@@ -1,6 +1,6 @@
 <h1>Mood Tracker</h1>
 {{#if user}}
-    <a href="/moods/create" class="btn btn-primary">Add Your Current Mood</a>
+    <a href="/moods/create" class="btn btn-warning">Add Your Current Mood</a>
 {{/if}}
 <section class="row">
     {{#each moods}}
@@ -19,7 +19,7 @@
             <p class="card-text">{{this.notable}}</p>
             <p class="card-text">{{this.date}}</p>
             {{#if ../user}}
-                <a class="btn btn-warning" href="/moods/delete/{{this._id}}" onclick="return confirmDelete()">Delete</a>
+                <a class="btn btn-primary" href="/moods/delete/{{this._id}}" onclick="return confirmDelete()">Delete</a>
             {{/if}}
         </div>
     </div>
