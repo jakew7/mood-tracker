@@ -226,11 +226,11 @@ form img {
 
 
 .content h2{
-  position: fixed;
+  position:relative;
   color: #4dba27;
   text-align: center;
   z-index: 99;
-  margin-bottom: 700px;
+  margin-bottom: 50px;
   font-size: 180px;
   font-weight: 700px;
   font-family: 'Kanit', sans-serif;
@@ -238,22 +238,20 @@ form img {
 }
 
 .content h3 {
-  position: fixed;
+  position:relative;
   color: #ffffff;
   text-align: center;
-  z-index: 99;
-  margin-bottom: 400px;
+  z-index: 20;
   font-size: 30px;
   font-family: sans-serif;
   text-shadow: 2px 2px 14px #000000;
 }
 
 .content h4 {
-  position: fixed;
+  position:relative;
   color: #ffffff;
   text-align: center;
   z-index: 99;
-  margin-bottom: 300px;
   font-size: 30px;
   font-family:  sans-serif;
   text-shadow: 2px 2px 14px #000000;
