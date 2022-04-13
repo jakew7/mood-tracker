@@ -211,6 +211,9 @@ form img {
 
 }
 
+@media screen and (max-width : 480px){}
+
+
 .content h2{
   position: fixed;
   color: #4dba27;
