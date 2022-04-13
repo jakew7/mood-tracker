@@ -37,6 +37,8 @@ a {
 .nav-link {
   font-size: 22px;
   color: white !important;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
 }
 /* navbar end */
 
